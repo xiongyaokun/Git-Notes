@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[译]merge vs rebase - irocker - 博客园</title>
+<link type="text/css" rel="stylesheet" href="blog-common.css-v=ChDk9h03-S75WEqNhGvXkWireJ5cCWdK1xRM9NIXfnM1.css" tppabs="http://www.cnblogs.com/bundles/blog-common.css?v=ChDk9h03-S75WEqNhGvXkWireJ5cCWdK1xRM9NIXfnM1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="bundle-SimpleGamboge.css-v=aSLAdexzVdfQ-X3NVB0Mbjc4zwVKew6kyW7t2_5aMDU1.css" tppabs="http://www.cnblogs.com/skins/SimpleGamboge/bundle-SimpleGamboge.css?v=aSLAdexzVdfQ-X3NVB0Mbjc4zwVKew6kyW7t2_5aMDU1"/>
+<link type="text/css" rel="stylesheet" href="208208.css-v=nKz4k1-yFlPrlVSPJYyOrPPJXhM=.css" tppabs="http://www.cnblogs.com/blog/customcss/208208.css?v=nKz4k1%2fyFlPrlVSPJYyOrPPJXhM%3d"/>
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="bundle-SimpleGamboge-mobile.css-v=d9LctKHRIQp9rreugMcQ1-UJuq_j1fo0GZXTXj8Bqrk1.css" tppabs="http://www.cnblogs.com/skins/SimpleGamboge/bundle-SimpleGamboge-mobile.css?v=d9LctKHRIQp9rreugMcQ1-UJuq_j1fo0GZXTXj8Bqrk1"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/irocker/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/irocker/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/irocker/wlwmanifest.xml"/>
+<script src="jquery.js" tppabs="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'irocker', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="blog-common.js-v=Luc6U_bgyPg764kNG7TcM6wg6ibyyUYRDlBLbP3UdnA1.js" tppabs="http://www.cnblogs.com/bundles/blog-common.js?v=Luc6U_bgyPg764kNG7TcM6wg6ibyyUYRDlBLbP3UdnA1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/"><img id="blogLogo" src="logo.gif" tppabs="http://www.cnblogs.com/Skins/custom/images/logo.gif" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">irocker</a></h1>
+<h2>你也许会爱上城市的某一条街道<br/>
+喜欢趁着夜色独自在那徘徊<br/>
+他熟悉又陌生<br/>
+有过太多世人皆知<br/>
+或者无人知晓的故事发生<br/>
+当午夜降临喧嚣褪去<br/>
+点一根烟<br/>
+任晚风轻轻吹过<br/>
+像没发生过太多记忆<br/>
+似生活经过了时间<br/>
+--宁静嘎嘎</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/%27" tppabs="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://i.cnblogs.com/EditPosts.aspx?opt=1  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/EditPosts.aspx?opt=1%27" tppabs="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://msg.cnblogs.com/send/irocker  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://msg.cnblogs.com/send/irocker%27" tppabs="https://msg.cnblogs.com/send/irocker">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/rss  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/rss%27" tppabs="http://www.cnblogs.com/irocker/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/irocker/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://i.cnblogs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/%27" tppabs="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 85&nbsp; </span>
+<span id="stats_article_count">文章 - 1&nbsp; </span>
+<span id="stats-comment_count">评论 - 8</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="merge-vs-rebase.html" tppabs="http://www.cnblogs.com/irocker/p/merge-vs-rebase.html">[译]merge vs rebase</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>git rebase和git merge设计的初衷是解决相同的一件事, 即把一个分支合并到另外一个分支--只是他们两个处理的方式非常不一样.</p>
+<p>&nbsp;</p>
+<p>当你在一个特定的分支开发新功能, 团队的其它成员在master分支工作提交了新的commit. 这个项目的历史就会分叉.</p>
+<p><img src="702742-20151005141125190-1930923639-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005141125190-1930923639.png" alt="" /></p>
+<p>现在假设master中的这个新的commit和你在其它分支中开发的新功能相关, 你想在你的feature分支中包含这个commit, 你有两种选择:merge和rebase.</p>
+<p>&nbsp;</p>
+<h2>merge</h2>
+<p>最简单的办法就是merge master分支到你的feature分支, 使用如下代码:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout feature
+git merge master
+</pre>
+</div>
+<p>你还可以把这两句命令压缩成一行:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git merge master feature
+</pre>
+</div>
+<p>这会在feature分支创建一个"merge commit",现在你的分支的结构如下:</p>
+<p><img src="702742-20151005141703409-797272396.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005141703409-797272396.png" alt="" /></p>
+<p>merge比较好, 因为他是一个无损坏的操作. 存在的分支不会发生什么改变. 这避免了使用rebase时候的许多陷阱.</p>
+<p>&nbsp;</p>
+<p>当feature分支想要和上游的commit一起工作的时候使用merge你的分支会多出一个"merge commit".&nbsp;</p>
+<p>&nbsp;</p>
+<h2>rebase</h2>
+<p>你可以使用rebase将master的修改合并到feature:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout feature
+git rebase master
+</pre>
+</div>
+<p>会把整个feature分支的commit放到mager分支之后, rebase不会创建一个"merge commit", rebase会为你分支的每个commit创建一个新的commit.</p>
+<p><img src="702742-20151005142452315-1867651028-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005142452315-1867651028.png" alt="" /></p>
+<p>使用rebase主要的一个好处是你的项目历史比较干净. 首先, rebase不再有merge commit. 第二, 从上图来看使用rebase项目的历史不会分叉.</p>
+<p>&nbsp;</p>
+<h2>交互式rebase</h2>
+<p>通常用来在merge一个feature分支到master之前来整理历史.</p>
+<p>&nbsp;</p>
+<p>要开始一个交互式的rebase, 只需要传递-i标记给 git rebase 命令:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout feature
+git rebase -i master
+</pre>
+</div>
+<p>运行后会打开一个文本编辑器列出所有要move的commit:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">pick 33d5b7a Message for commit #1
+pick 9480b3d Message for commit #2
+pick 5c67e61 Message for commit #3
+</pre>
+</div>
+<p>这个列表展现了rebase运行后你的branch是怎么样的. 通过修改pick命令或者对这些行纪录进行重新的排序, 你可以决定哪种分支历史是你想要的. 例如, 如果第二个commit只是修复了第一个commit的一些小问题, 你可以使用fixup命令把这两个commit压缩成一个commit:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">pick 33d5b7a Message for commit #1
+fixup 9480b3d Message for commit #2
+pick 5c67e61 Message for commit #3
+</pre>
+</div>
+<p>当你保存并关闭这个文本编辑器, Git会按照你的结构执行rebase, 运行后项目历史如下:</p>
+<p><img src="702742-20151005144438315-795477188-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005144438315-795477188.png" alt="" /></p>
+<p>消除"merge commit"这种不重要的commit, 能让你的feature历史更易懂一些. 这是git merge所不能的.</p>
+<p>&nbsp;</p>
+<h2>rebase的黄金法则</h2>
+<p>一旦你明白了rebase是怎么回事, 剩下最重要的事情就是搞懂什么情况下不要使用rebase. 其中一条黄金法则是永远不在在一个公共的分支中使用rebase.</p>
+<p>&nbsp;</p>
+<p>想象一下如果你rebase master到feature分支:</p>
+<p><img src="702742-20151005144942128-1488844165.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005144942128-1488844165.png" alt="" /></p>
+<p>　　</p>
+<p>&nbsp;rebase会将master的commit移动到feature分支的前面去. 这个问题只发生在你的本地仓储. 其它的开发这还是在开始的master中工作.因为rebase后移动的commit实际上是新的commit, Git会认为你的master分支历史和其它人的master分支分叉了.</p>
+<p>&nbsp;</p>
+<p>如果想要同步这两个master分支, 只有merge他们了, 结果是将有一个额外的merge commit还有两组包含同样修改的commit.</p>
+<p>&nbsp;</p>
+<p>在运行git rebase之前, 你应该问问自己"其他人能看到这个分支吗, 这个分支对团队其他人可见吗?" 如果对其它开发者可见, 你应该要非常谨慎多想想是否有一个不会破坏结构的方法(例如git revert).</p>
+<p>&nbsp;</p>
+<h2>Force push</h2>
+<p>如果你尝试把rebase后的master push到远程仓储, Git会阻止你的push, 因为和远程仓储的master分支有冲突. 这个时候你可以使用force push来强制push:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git push --force
+</pre>
+</div>
+<p>这会用你的仓储的master完全覆盖远程仓储的master. 因此你这样做的时候要非常小心, 这会给团队的其它成员带来极大的困扰.</p>
+<p>&nbsp;</p>
+<h2>工作流演示</h2>
+<h3>local cleanup</h3>
+<p>周期性的执行交互式的rebase, 可以让你的feature分支的每一个commit更加聚合、更加有意义. &nbsp;</p>
+<p>&nbsp;</p>
+<p>当调用git rebase的时候, new base可以有两个选择: 一个是feature的父分支(例如 master), 另一个是你feature分支中的之前的commit. 后者当你需要fix最近的commits的时候非常管用. 下面的命令会运行一个对最近3个commit的一个交互式rebase.</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout feature
+git rebase -i HEAD~3
+</pre>
+</div>
+<p>指定HEAD~3做为新的base, 不会移动分支--只是交互的重写最近的3个commit. 注意了上游的修改不会放到你的feature分支来.</p>
+<p><img src="702742-20151005160237753-1986820408-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005160237753-1986820408.png" alt="" /></p>
+<p>如果你想重写整个feature, 可以使用git merge-base命令来查找feature分支最初的base. 下面的命令会返回最初base的commit ID, 可以把他传给git rebase:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git merge-base feature master
+</pre>
+</div>
+<p>　　</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2015-10-05 23:27</span> <a href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">irocker</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="javascript:if(confirm(%27https://i.cnblogs.com/EditPosts.aspx?postid=4855710  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/EditPosts.aspx?postid=4855710%27" tppabs="https://i.cnblogs.com/EditPosts.aspx?postid=4855710" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(4855710);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=208208,cb_entryId=4855710,cb_blogApp=currentBlogApp,cb_blogUserGuid='0dfb4f4d-1f81-e411-b908-9dcfd8948a71',cb_entryCreatedDate='2015/10/5 23:27:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='cnblogs_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='cnblogs_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright &copy;2017 irocker
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "hm.js-7a1c05c140b408c03df47aab39f3da1d"/*tpa=http://hm.baidu.com/hm.js?7a1c05c140b408c03df47aab39f3da1d*/;
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--PageEndHtml Block End-->
+</body>
+</html>

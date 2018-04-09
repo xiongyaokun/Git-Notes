@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[译]git log进阶 - irocker - 博客园</title>
+<link type="text/css" rel="stylesheet" href="blog-common.css-v=ChDk9h03-S75WEqNhGvXkWireJ5cCWdK1xRM9NIXfnM1.css" tppabs="http://www.cnblogs.com/bundles/blog-common.css?v=ChDk9h03-S75WEqNhGvXkWireJ5cCWdK1xRM9NIXfnM1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="bundle-SimpleGamboge.css-v=aSLAdexzVdfQ-X3NVB0Mbjc4zwVKew6kyW7t2_5aMDU1.css" tppabs="http://www.cnblogs.com/skins/SimpleGamboge/bundle-SimpleGamboge.css?v=aSLAdexzVdfQ-X3NVB0Mbjc4zwVKew6kyW7t2_5aMDU1"/>
+<link type="text/css" rel="stylesheet" href="208208.css-v=nKz4k1-yFlPrlVSPJYyOrPPJXhM=.css" tppabs="http://www.cnblogs.com/blog/customcss/208208.css?v=nKz4k1%2fyFlPrlVSPJYyOrPPJXhM%3d"/>
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="bundle-SimpleGamboge-mobile.css-v=d9LctKHRIQp9rreugMcQ1-UJuq_j1fo0GZXTXj8Bqrk1.css" tppabs="http://www.cnblogs.com/skins/SimpleGamboge/bundle-SimpleGamboge-mobile.css?v=d9LctKHRIQp9rreugMcQ1-UJuq_j1fo0GZXTXj8Bqrk1"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/irocker/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/irocker/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/irocker/wlwmanifest.xml"/>
+<script src="jquery.js" tppabs="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'irocker', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="blog-common.js-v=Luc6U_bgyPg764kNG7TcM6wg6ibyyUYRDlBLbP3UdnA1.js" tppabs="http://www.cnblogs.com/bundles/blog-common.js?v=Luc6U_bgyPg764kNG7TcM6wg6ibyyUYRDlBLbP3UdnA1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/"><img id="blogLogo" src="logo.gif" tppabs="http://www.cnblogs.com/Skins/custom/images/logo.gif" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">irocker</a></h1>
+<h2>你也许会爱上城市的某一条街道<br/>
+喜欢趁着夜色独自在那徘徊<br/>
+他熟悉又陌生<br/>
+有过太多世人皆知<br/>
+或者无人知晓的故事发生<br/>
+当午夜降临喧嚣褪去<br/>
+点一根烟<br/>
+任晚风轻轻吹过<br/>
+像没发生过太多记忆<br/>
+似生活经过了时间<br/>
+--宁静嘎嘎</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/%27" tppabs="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://i.cnblogs.com/EditPosts.aspx?opt=1  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/EditPosts.aspx?opt=1%27" tppabs="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://msg.cnblogs.com/send/irocker  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://msg.cnblogs.com/send/irocker%27" tppabs="https://msg.cnblogs.com/send/irocker">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/rss  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/rss%27" tppabs="http://www.cnblogs.com/irocker/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/irocker/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://i.cnblogs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/%27" tppabs="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 85&nbsp; </span>
+<span id="stats_article_count">文章 - 1&nbsp; </span>
+<span id="stats-comment_count">评论 - 8</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="advanced-git-log.html" tppabs="http://www.cnblogs.com/irocker/p/advanced-git-log.html">[译]git log进阶</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><h1>格式化log输出</h1>
+<h2>oneline</h2>
+<p>--oneline标记将每个commit压缩成一行. 默认情况下显示一个commit ID和commit描述的第一行. 输出如下:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">0e25143 Merge branch 'feature'
+ad8621a Fix a bug in the feature
+16b36c6 Add a new feature
+23ad9ad Add the initial code base
+</pre>
+</div>
+<p>&nbsp;</p>
+<h2>decorate</h2>
+<p>许多时候知道commit是和哪一个分支或tag关联的是非常有用的. --decorate标记会让git log显示每个commit的引用(如:分支、tag等).</p>
+<p>&nbsp;</p>
+<p>可以和其它的config选项结合使用. 例如, git log --oneline --decorate输出如下:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">0e25143 (HEAD, master) Merge branch 'feature'
+ad8621a (feature) Fix a bug in the feature
+16b36c6 Add a new feature
+23ad9ad (tag: v0.9) Add the initial code base
+</pre>
+</div>
+<p>从中可以看出第一个commit在master分支. 第二个commit在一个feature分支, 第四个commit被tag为v0.9.</p>
+<p>&nbsp;</p>
+<h2>diffs</h2>
+<p>git log有许多选项是为了展示每个commit的不同之处的. 最常用的两个是--stat和-p.</p>
+<p>&nbsp;</p>
+<p>--stat显示每个commit中每个文件的添加的行数和删除的行数.这对我们了解一个commit大致有些什么修改非常有用. 下面的commit hello.py新增了67行, 删除了38行:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:true;">commit f2a238924e89ca1d4947662928218a06d39068c3
+Author: John &lt;john@example.com&gt;
+Date:   Fri Jun 25 17:30:28 2014 -0500
+
+    Add a new feature
+
+ hello.py | 105 ++++++++++++++++++++++++-----------------
+ 1 file changed, 67 insertion(+), 38 deletions(-)
+</pre>
+</div>
+<p>文件名后面的＋－符号是这个文件相对的增加和删除行数.</p>
+<p>&nbsp;</p>
+<p>如果你想看每个commit具体修改了些什么可以使用git log -p, 结果如下:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">commit 16b36c697eb2d24302f89aa22d9170dfe609855b
+Author: Mary &lt;mary@example.com&gt;
+Date:   Fri Jun 25 17:31:57 2014 -0500
+
+    Fix a bug in the feature
+
+diff --git a/hello.py b/hello.py
+index 18ca709..c673b40 100644
+--- a/hello.py
++++ b/hello.py
+@@ -13,14 +13,14 @@ B
+-print("Hello, World!")
++print("Hello, Git!")
+</pre>
+</div>
+<p>&nbsp;</p>
+<h2>shortlog</h2>
+<p>git shortlog是一个特殊版本的git log, 他的目的是为了创建一个发布的通知. 将commit按照作者分组, 显示每个commit的第一行描述. 通过他你很容易看到谁做了些什么.</p>
+<p>&nbsp;</p>
+<p>例如, 两个开发者为一个项目贡献了5个commit, git shortlog的输出如下:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">Mary (2):
+      Fix a bug in the feature
+      Fix a serious security hole in our framework
+
+John (3):
+      Add the initial code base
+      Add a new feature
+      Merge branch 'feature'
+</pre>
+</div>
+<p>默认情况下git shortlog按照作者名排序, 你可以使用-n按照每个作者的commit数量来排序.</p>
+<p>&nbsp;</p>
+<h2>graph</h2>
+<p>--graph标记会画出一个ASCII图展示commit历史的分支结构. 通常和--oneline --decorate结合使用:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log --graph --oneline --decorate
+</pre>
+</div>
+<p>　　</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">*   0e25143 (HEAD, master) Merge branch 'feature'
+|\  
+| * 16b36c6 Fix a bug in the new feature
+| * 23ad9ad Start a new feature
+* | ad8621a Fix a critical security issue
+|/  
+* 400e4b7 Fix typos in the documentation
+* 160e224 Add the initial code base
+</pre>
+</div>
+<p>星号告诉你commit在哪一个branch上,上面的输出告诉我们23ad9ad 和 16b36c6在一个主题分支, 其它的在master分支.</p>
+<p>&nbsp;</p>
+<h2>自定义输出</h2>
+<p>可以使用--pretty=format:"&lt;string&gt;"来自定义输出.&nbsp;</p>
+<p>&nbsp;</p>
+<p>例如%cn代表commiter name, %h代表commit hash的缩写, &nbsp;%cd代表commiter date.</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log --pretty=format:"%cn committed %h on %cd"
+</pre>
+</div>
+<p>输出如下:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">John committed 400e4b7 on Fri Jun 24 12:30:04 2014 -0500
+John committed 89ab2cf on Thu Jun 23 17:09:42 2014 -0500
+Mary committed 180e223 on Wed Jun 22 17:21:19 2014 -0500
+John committed f12ca28 on Wed Jun 22 13:50:31 2014 -0500
+</pre>
+</div>
+<p>&nbsp;</p>
+<h1>筛选commit历史</h1>
+<h2>按数量</h2>
+<p>可以使用-n来限制输出的数量. 下面的例子只显示最近3个commit.</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log -3
+</pre>
+</div>
+<p>&nbsp;</p>
+<h2>按日期</h2>
+<p>可以使用--after或--before来按照日期筛选. 下面的例子只显示2014年7月1号之后的commit(包含7月1号).</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log --after="2014-7-1"
+</pre>
+</div>
+<p>还可以使用一个相对的时间, 例如"1 week ago"和"yesterday""</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log --after="yesterday"
+</pre>
+</div>
+<p>如果看某个时间段的commit可以同时使用--after和--before. 下面的例子显示2014年7月1日到2014年7月4日之间的commit:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log --after="2014-7-1" --before="2014-7-4"
+</pre>
+</div>
+<p>注意--since --until和 --after --before是一个意思.</p>
+<p>&nbsp;</p>
+<h2>按作者</h2>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log --author="John"
+</pre>
+</div>
+<p>显示John贡献的commit. 作者名不需要精确匹配--只需要包含就行了.</p>
+<p>&nbsp;</p>
+<p>还可以使用正则表达式. 下面的命令搜索Marry和John贡献的commit.</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log --author="John\|Mary"
+</pre>
+</div>
+<p>注意这个--author不仅包含名还包含email, 所以你可以用这个搜索email.</p>
+<p>　　</p>
+<h2>按commit描述</h2>
+<p>例如, 如果你的团队会在每个commit描述里面加上相关的issue号, 你可以使用下面的命令查找跟某个issue相关的commit:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log --grep="JRA-224"
+</pre>
+</div>
+<p>还可以传入-i用来忽略大小写.</p>
+<p>&nbsp;</p>
+<h2>按文件</h2>
+<p>有时你可能只对某个文件的修改感兴趣, 你只想查看跟某个文件相关的历史信息, 你只需要插入你感兴趣文件的路径就可以了. 下面的例子只返回和foo.py或bar.py相关的commit:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log -- foo.py bar.py
+</pre>
+</div>
+<p>这里的--是告诉Git后面的参数是文件路径而不是branch的名字. 如果后面的文件路径不会和某个branch产生混淆, 你可以省略--.</p>
+<p>&nbsp;</p>
+<h2>按内容</h2>
+<p>有时你想搜索和新增或删除某行代码相关的commit. 可以使用 －S"&lt;string&gt;". 下面的例子假设你想知道Hello, World!这句话是什么时候加入到项目里去的, 你可以使用下面的命令:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log -S"Hello,World!"
+</pre>
+</div>
+<p>如果你想使用正则表达式去匹配而不是字符串, 那么你可以使用-G代替-S.</p>
+<p>&nbsp;</p>
+<p>这是一个非常有用的debug工具, 使用他你可以定位所有跟某行代码相关的commit. 甚至可以查看某行是什么时候被copy的, 什么时候移到另外一个文件中去的.</p>
+<p>&nbsp;</p>
+<h2>按范围</h2>
+<p>可以查看某个范围的commit:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log &lt;since&gt;..&lt;until&gt;
+</pre>
+</div>
+<p>这个命令非常有用当你使用branch做为range参数的时候. 能很方便的显示2个branch之间的不同. 看看下面的命令:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log master..feature
+</pre>
+</div>
+<p>master..feature这个range包含了在feature有而在master没有的所有commit. 如图所示(图中最下面的master..feature应该错了, 是feature..master才对):</p>
+<p><img src="702742-20151006222323518-435521808.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151006222323518-435521808.png" alt="" /></p>
+<p>feature..master包含所有master有但是feature没有的commit.</p>
+<p>&nbsp;</p>
+<h2>过滤merge commit</h2>
+<p>默认情况下git log会输出merge commit. &nbsp;你可以通过--no-merges标记来过滤掉merge commit:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log --no-merges
+</pre>
+</div>
+<p>如果你只对merge commit感兴趣可以使用--merges:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git log --merges
+</pre>
+</div>
+<p>　　</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2015-10-06 22:39</span> <a href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">irocker</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="javascript:if(confirm(%27https://i.cnblogs.com/EditPosts.aspx?postid=4856604  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/EditPosts.aspx?postid=4856604%27" tppabs="https://i.cnblogs.com/EditPosts.aspx?postid=4856604" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(4856604);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=208208,cb_entryId=4856604,cb_blogApp=currentBlogApp,cb_blogUserGuid='0dfb4f4d-1f81-e411-b908-9dcfd8948a71',cb_entryCreatedDate='2015/10/6 22:39:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='cnblogs_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='cnblogs_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright &copy;2017 irocker
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "hm.js-7a1c05c140b408c03df47aab39f3da1d"/*tpa=http://hm.baidu.com/hm.js?7a1c05c140b408c03df47aab39f3da1d*/;
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--PageEndHtml Block End-->
+</body>
+</html>

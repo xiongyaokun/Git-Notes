@@ -1,0 +1,25 @@
+git reflog 
+此命令可以查看所有的修改历史。
+
+git log --pretty=oneline
+使提交记录在一行显示，显示更清晰。
+
+
+git diff 2a 2b
+比较两个版本之间的区别
+
+在github网页中查询两个提交的比较：/compare/2a...2b
+
+
+从Github上下载修正和改进后的源码用于更新本地仓库：
+git fetch --all
+git fetch --tags
+git fetch --hard origin/master
+
+
+#如果git status时中文字符不能正常显示，使用如下命令
+git config --global core.quotepath false
+
+
+#向github仓库提交代码
+git push original master

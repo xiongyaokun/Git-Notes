@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[译]git checkout - irocker - 博客园</title>
+<link type="text/css" rel="stylesheet" href="blog-common.css-v=ChDk9h03-S75WEqNhGvXkWireJ5cCWdK1xRM9NIXfnM1.css" tppabs="http://www.cnblogs.com/bundles/blog-common.css?v=ChDk9h03-S75WEqNhGvXkWireJ5cCWdK1xRM9NIXfnM1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="bundle-SimpleGamboge.css-v=aSLAdexzVdfQ-X3NVB0Mbjc4zwVKew6kyW7t2_5aMDU1.css" tppabs="http://www.cnblogs.com/skins/SimpleGamboge/bundle-SimpleGamboge.css?v=aSLAdexzVdfQ-X3NVB0Mbjc4zwVKew6kyW7t2_5aMDU1"/>
+<link type="text/css" rel="stylesheet" href="208208.css-v=nKz4k1-yFlPrlVSPJYyOrPPJXhM=.css" tppabs="http://www.cnblogs.com/blog/customcss/208208.css?v=nKz4k1%2fyFlPrlVSPJYyOrPPJXhM%3d"/>
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="bundle-SimpleGamboge-mobile.css-v=d9LctKHRIQp9rreugMcQ1-UJuq_j1fo0GZXTXj8Bqrk1.css" tppabs="http://www.cnblogs.com/skins/SimpleGamboge/bundle-SimpleGamboge-mobile.css?v=d9LctKHRIQp9rreugMcQ1-UJuq_j1fo0GZXTXj8Bqrk1"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/irocker/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/irocker/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/irocker/wlwmanifest.xml"/>
+<script src="jquery.js" tppabs="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'irocker', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="blog-common.js-v=Luc6U_bgyPg764kNG7TcM6wg6ibyyUYRDlBLbP3UdnA1.js" tppabs="http://www.cnblogs.com/bundles/blog-common.js?v=Luc6U_bgyPg764kNG7TcM6wg6ibyyUYRDlBLbP3UdnA1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/"><img id="blogLogo" src="logo.gif" tppabs="http://www.cnblogs.com/Skins/custom/images/logo.gif" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">irocker</a></h1>
+<h2>你也许会爱上城市的某一条街道<br/>
+喜欢趁着夜色独自在那徘徊<br/>
+他熟悉又陌生<br/>
+有过太多世人皆知<br/>
+或者无人知晓的故事发生<br/>
+当午夜降临喧嚣褪去<br/>
+点一根烟<br/>
+任晚风轻轻吹过<br/>
+像没发生过太多记忆<br/>
+似生活经过了时间<br/>
+--宁静嘎嘎</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/%27" tppabs="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://i.cnblogs.com/EditPosts.aspx?opt=1  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/EditPosts.aspx?opt=1%27" tppabs="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://msg.cnblogs.com/send/irocker  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://msg.cnblogs.com/send/irocker%27" tppabs="https://msg.cnblogs.com/send/irocker">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/rss  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/rss%27" tppabs="http://www.cnblogs.com/irocker/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/irocker/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://i.cnblogs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/%27" tppabs="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 85&nbsp; </span>
+<span id="stats_article_count">文章 - 1&nbsp; </span>
+<span id="stats-comment_count">评论 - 8</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="git-checkout.html" tppabs="http://www.cnblogs.com/irocker/p/git-checkout.html">[译]git checkout</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><h1>git checkout</h1>
+<p>git checkout提供3种不同的功能:</p>
+<p>checking out文件, checking out commits, checking out branch.</p>
+<p>&nbsp;</p>
+<p>checkout commit会让你的工作目录整个回到某个commit的状态下. 你可以使用checkout commit查看你项目的老的版本, 而不需要担心会影响你项目的current状态. checkout一个文件会真正影响你的项目的current状态.</p>
+<p>&nbsp;</p>
+<h2>用法</h2>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout master
+</pre>
+</div>
+<p>回到master这个branch.</p>
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout &lt;commit&gt; &lt;file&gt;
+</pre>
+</div>
+<p>指定一个文件回到某个commit时的版本. 工作目录的&lt;file&gt;文件会完整copy&lt;commit&gt;中的文件的内容, 并且会被添加到stage区中.</p>
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout &lt;commit&gt;
+</pre>
+</div>
+<p>把工作目录所有的文件都回到指定的commit中时的状态. &lt;commit&gt;可以是一个hash或者一个tag. 运行后你是在一个detached HEAD的状态.怎么理解这个detached HEAD状态呢？ 可以简单的说这个时候你运行git checkout master还是能回到最初那个真正的HEAD里面的状态. 你在detached状态里面做的修改(add, commit)其实不会真正有什么影响, 一git checkout master马上还原到最初的状态. &nbsp;但是如果这个时候你使用git checkout -b &lt;new branch&gt; 创建一个新的分支, 然后git checkout master git merge &lt;new branch&gt; 你做的修改才会真正的起到作用.</p>
+<p>&nbsp;</p>
+<h2>讨论</h2>
+<p>一旦你创立了项目历史, git checkout能让你的本地机器的工作目录回到任何快照的时候.</p>
+<p>&nbsp;</p>
+<p>checkout一个老的commit是一个只读的操作. 查看老的版本不会对你的仓储有什么影响. 你项目的当前状态还是在master这个branch里面, 没受什么影响. HEAD通常是指向master或者某个本地分支, 但是一旦你checkout了一个老的commit, HEAD不在指向分支, 而是指向你这个老的commit, 这就是所谓的detached HEAD状态.</p>
+<p><img src="702742-20150927003726006-1487572159-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201509/702742-20150927003726006-1487572159.png" alt="" /></p>
+<p>不同的是, checkout一个老的文件会影响你仓储的当前状态. 你可以重新commit这个老版本的文件到新的快照中去. 所以git checkout可以让你指定的文件回到一个老的版本.</p>
+<p><img src="702742-20150927004044319-1128232241-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201509/702742-20150927004044319-1128232241.png" alt="" /></p>
+<p>&nbsp;</p>
+<h2>例子</h2>
+<h3>查看一个老的版本</h3>
+<p>这个例子假设你要在你的项目中做一些疯狂的实验, 你不确定是否要保存你在这个实验中所做的工作. 首先你需要找到你想要的版本的ID.</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:true;">git log --oneline
+</pre>
+</div>
+<p>项目的历史如下:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">b7119f2 Continue doing crazy things
+872fa7e Try something crazy
+a1e8fb5 Make some important changes to hello.py
+435b61d Create hello.py
+9773e52 Initial import
+</pre>
+</div>
+<p>使用checkout 去查看&ldquo;Make some import changes to hello.py&rdquo;这个commit:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout a1e8fb5
+</pre>
+</div>
+<p><span data-reactid=".0.4.0.0.$=1$tutorials:0.$=1$/git/tutorials/viewing-old-commits:0.0.1.0.0.0.1:o.0">这时你的工作目录回到了<code data-reactid=".0.4.0.0.$=1$tutorials:0.$=1$/git/tutorials/viewing-old-commits:0.0.1.0.0.0.1:o.1">a1e8fb5</code><span data-reactid=".0.4.0.0.$=1$tutorials:0.$=1$/git/tutorials/viewing-old-commits:0.0.1.0.0.0.1:o.2">&nbsp;commit的状态下. 这个时候你可以做任何你想要做的修改而不用担心你会破坏你的项目. 你在这做的任何操作都不会保存在你的仓储中. <span data-reactid=".0.4.0.0.$=1$tutorials:0.$=1$/git/tutorials/viewing-old-commits:0.0.1.0.0.0.1:o.4">&nbsp;使用下面的命令回到你项目的current状态中:</span></span></span></p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout master
+</pre>
+</div>
+<h3>checkout一个文件</h3>
+<p>如果你只对某一个文件感兴趣, 你可以使用git checkout去获取这个文件的老版本. 例如, 如果只是想查看hello.py文件的一个老的版本, 你可以使用下面的命令:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout a1e8fb5 hello.py
+</pre>
+</div>
+<p>注意了, 和checkout一个commit不同, checkout文件会真正影响你项目的当前状态. 如果你不想要这个老版本了, 你可以checkout最新的版本:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:true;">git checkout HEAD hello.py
+</pre>
+</div>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2015-09-27 01:12</span> <a href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">irocker</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="javascript:if(confirm(%27https://i.cnblogs.com/EditPosts.aspx?postid=4841603  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/EditPosts.aspx?postid=4841603%27" tppabs="https://i.cnblogs.com/EditPosts.aspx?postid=4841603" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(4841603);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=208208,cb_entryId=4841603,cb_blogApp=currentBlogApp,cb_blogUserGuid='0dfb4f4d-1f81-e411-b908-9dcfd8948a71',cb_entryCreatedDate='2015/9/27 1:12:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='cnblogs_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='cnblogs_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright &copy;2017 irocker
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "hm.js-7a1c05c140b408c03df47aab39f3da1d"/*tpa=http://hm.baidu.com/hm.js?7a1c05c140b408c03df47aab39f3da1d*/;
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--PageEndHtml Block End-->
+</body>
+</html>

@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[译]reset, checkout和revert - irocker - 博客园</title>
+<link type="text/css" rel="stylesheet" href="blog-common.css-v=ChDk9h03-S75WEqNhGvXkWireJ5cCWdK1xRM9NIXfnM1.css" tppabs="http://www.cnblogs.com/bundles/blog-common.css?v=ChDk9h03-S75WEqNhGvXkWireJ5cCWdK1xRM9NIXfnM1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="bundle-SimpleGamboge.css-v=aSLAdexzVdfQ-X3NVB0Mbjc4zwVKew6kyW7t2_5aMDU1.css" tppabs="http://www.cnblogs.com/skins/SimpleGamboge/bundle-SimpleGamboge.css?v=aSLAdexzVdfQ-X3NVB0Mbjc4zwVKew6kyW7t2_5aMDU1"/>
+<link type="text/css" rel="stylesheet" href="208208.css-v=nKz4k1-yFlPrlVSPJYyOrPPJXhM=.css" tppabs="http://www.cnblogs.com/blog/customcss/208208.css?v=nKz4k1%2fyFlPrlVSPJYyOrPPJXhM%3d"/>
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="bundle-SimpleGamboge-mobile.css-v=d9LctKHRIQp9rreugMcQ1-UJuq_j1fo0GZXTXj8Bqrk1.css" tppabs="http://www.cnblogs.com/skins/SimpleGamboge/bundle-SimpleGamboge-mobile.css?v=d9LctKHRIQp9rreugMcQ1-UJuq_j1fo0GZXTXj8Bqrk1"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/irocker/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/irocker/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/irocker/wlwmanifest.xml"/>
+<script src="jquery.js" tppabs="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'irocker', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="blog-common.js-v=Luc6U_bgyPg764kNG7TcM6wg6ibyyUYRDlBLbP3UdnA1.js" tppabs="http://www.cnblogs.com/bundles/blog-common.js?v=Luc6U_bgyPg764kNG7TcM6wg6ibyyUYRDlBLbP3UdnA1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/"><img id="blogLogo" src="logo.gif" tppabs="http://www.cnblogs.com/Skins/custom/images/logo.gif" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">irocker</a></h1>
+<h2>你也许会爱上城市的某一条街道<br/>
+喜欢趁着夜色独自在那徘徊<br/>
+他熟悉又陌生<br/>
+有过太多世人皆知<br/>
+或者无人知晓的故事发生<br/>
+当午夜降临喧嚣褪去<br/>
+点一根烟<br/>
+任晚风轻轻吹过<br/>
+像没发生过太多记忆<br/>
+似生活经过了时间<br/>
+--宁静嘎嘎</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/%27" tppabs="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://i.cnblogs.com/EditPosts.aspx?opt=1  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/EditPosts.aspx?opt=1%27" tppabs="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://msg.cnblogs.com/send/irocker  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://msg.cnblogs.com/send/irocker%27" tppabs="https://msg.cnblogs.com/send/irocker">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/rss  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/rss%27" tppabs="http://www.cnblogs.com/irocker/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/irocker/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://i.cnblogs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/%27" tppabs="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 85&nbsp; </span>
+<span id="stats_article_count">文章 - 1&nbsp; </span>
+<span id="stats-comment_count">评论 - 8</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="reset-checkout-revert.html" tppabs="http://www.cnblogs.com/irocker/p/reset-checkout-revert.html">[译]reset, checkout和revert</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>git reset, git checkout, git revert能让你撤销你本地仓储的一些修改, &nbsp;前两种命令可以作用于commit或者一个文件.</p>
+<p>&nbsp;</p>
+<h1>Commit级别的操作</h1>
+<p>注意了git revert只能作用于commit不能作用于文件.</p>
+<p>&nbsp;</p>
+<h2>reset</h2>
+<p>在commit级别, reset把你的branch的顶端移动到另外一个commit. 可以用来删除你当前分支的commit. 例如, 下面的命令把hotfix分支往后后退两次.</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout hotfix
+git reset HEAD~2
+</pre>
+</div>
+<p>hotfix最近两个commit成了dangling commit, 这意味在下次git指定垃圾回收的时候可以删除他们.&nbsp;</p>
+<p><img src="702742-20151005161639706-524776374-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005161639706-524776374.png" alt="" /></p>
+<p>这种reset的用法可以用来撤销没有被共享给其他人的修改.&nbsp;</p>
+<p>&nbsp;</p>
+<p>除了能移动当前的分支, 还可以变更stage区的快照,修改工作目录.</p>
+<ul>
+<li>--soft stage区的快照和工作目录都不会有任何变化.</li>
+<li>--mixed stage区的快照更新匹配到指定的commit的状态, 工作目录不会有修改. 这个是默认的option.</li>
+<li>--hard stage区的快照和工作目录都后被更新到指定的commit的状态</li>
+</ul>
+<p><img src="702742-20151005162247096-1176973520-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005162247096-1176973520.png" alt="" /></p>
+<p>上面三个标记经常和HEAD一起使用. git reset --mixed HEAD 会作用于stage区, 但是不会影响工作目录的修改. 如果你想完全的扔掉没有commit的修改, 你可以使用git reset --hard HEAD. 这个是git reset最常用的两种方法.</p>
+<p>&nbsp;</p>
+<p>当你传递一个commit给git reset的时候要非常小心, 因为这会修改当前分支的历史. 当这些历史已经被push了时, 这样做非常不好.</p>
+<p>&nbsp;</p>
+<h2>checkout</h2>
+<p>当你传递一个分支名给checkout, 会切换分支.</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout hotfix
+</pre>
+</div>
+<p>上面的命令移动HEAD到另外一个分支, 更新你的工作目录.</p>
+<p><img src="702742-20151005163907268-540956290-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005163907268-540956290.png" alt="" /></p>
+<p>你还可以checkout commit. 会将HEAD指向你指定的commit. 下面的命令checkout到当前commit的爷爷:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout HEAD~2
+</pre>
+</div>
+<p><img src="702742-20151005224217409-555161136-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005224217409-555161136.png" alt="" /></p>
+<p>这用来检查你项目的老版本非常有用. 因为没有任何一个分支指向当前HEAD, 所以checkout commit之后处于一个detached HEAD的状态. 在这种状态下添加的新的commit是多其它所有的分支不可见的. 所以, 你应该在添加commit到detached HEAD之前应该新建一个分支.</p>
+<p>&nbsp;</p>
+<h2>revert</h2>
+<p>revert通过新建一个新的commit来撤销commit. 这是一种安全的撤销方式. 下面的例子通过新建一个新的commit来撤销倒数第三个commit.</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout hotfix
+git revert HEAD~2　　</pre>
+</div>
+<p><img src="702742-20151005225202190-1586161645-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005225202190-1586161645.png" alt="" /></p>
+<p>git revert应该被用于撤销一个公共的分支, git reset用来撤销私有的分支.</p>
+<p>&nbsp;</p>
+<h1>文件级别的操作</h1>
+<p>git reset和git checkout都可以接受一个文件路径做为参数. 当指定了一个文件的路径的时候, reset和checkout只操作一个单一的文件.</p>
+<p>&nbsp;</p>
+<h2>reset</h2>
+<p>git reset更新stage区的快照去匹配指定commit时候的版本. 下面的命令把foo.py恢复到2nd-to-last commit的时候的状态并放入stage区:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git reset HEAD~2 foo.py
+</pre>
+</div>
+<p>运行git reset HEAD foo.py会把stage区的foo.py删除. &nbsp;工作目录下面的修改不会发生变化.</p>
+<p><img src="702742-20151005230156971-1481825343-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005230156971-1481825343.png" alt="" /></p>
+<p>--soft, --mixed, --hard标记在git reset文件的时候不起任何作用, stage的快照总是会被更新, 工作目录不会被更新到.</p>
+<p>&nbsp;</p>
+<h2>checkout</h2>
+<p>checkout 有点类似于reset, 但是checkout不会更新stage区, 而是更新工作目录.&nbsp;</p>
+<p><img src="702742-20151005230445534-1447311418-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151005230445534-1447311418.png" alt="" /></p>
+<p>下面的命令将工作区中的foo.py的内容更新为倒数第三次commit的内容:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout HEAD~2 foo.py
+</pre>
+</div>
+<p>git checkout HEAD foo.py的效果就是丢弃foo.py没有在stage区的修改. 效果和git reset HEAD --hard一样, 但是checkout只作用于一个单独的文件.</p>
+<p>&nbsp;</p>
+<h1>总结</h1>
+<table border="1">
+<tbody>
+<tr>
+<td>Command</td>
+<td>Scope</td>
+<td>Common use case</td>
+</tr>
+<tr>
+<td>git reset</td>
+<td>Commit-level</td>
+<td>丢弃私有分支的commit或丢弃没有commit的修改</td>
+</tr>
+<tr>
+<td>git reset</td>
+<td>File-level</td>
+<td>unstage一个文件</td>
+</tr>
+<tr>
+<td>git checkout</td>
+<td>Commit-level</td>
+<td>切换分支或检查一个老的快照</td>
+</tr>
+<tr>
+<td>git checkout</td>
+<td>File-level</td>
+<td>丢弃工作目录的修改</td>
+</tr>
+<tr>
+<td>git revert</td>
+<td>Commit-level</td>
+<td>撤销公共分支的commit</td>
+</tr>
+<tr>
+<td>git revert</td>
+<td>File-level</td>
+<td>revert没有文件级别的操作</td>
+</tr>
+</tbody>
+</table></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2015-10-05 23:36</span> <a href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">irocker</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="javascript:if(confirm(%27https://i.cnblogs.com/EditPosts.aspx?postid=4855920  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/EditPosts.aspx?postid=4855920%27" tppabs="https://i.cnblogs.com/EditPosts.aspx?postid=4855920" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(4855920);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=208208,cb_entryId=4855920,cb_blogApp=currentBlogApp,cb_blogUserGuid='0dfb4f4d-1f81-e411-b908-9dcfd8948a71',cb_entryCreatedDate='2015/10/5 23:36:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='cnblogs_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='cnblogs_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright &copy;2017 irocker
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "hm.js-7a1c05c140b408c03df47aab39f3da1d"/*tpa=http://hm.baidu.com/hm.js?7a1c05c140b408c03df47aab39f3da1d*/;
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--PageEndHtml Block End-->
+</body>
+</html>

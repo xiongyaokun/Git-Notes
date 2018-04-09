@@ -1,0 +1,383 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[译]使用branch - irocker - 博客园</title>
+<link type="text/css" rel="stylesheet" href="blog-common.css-v=ChDk9h03-S75WEqNhGvXkWireJ5cCWdK1xRM9NIXfnM1.css" tppabs="http://www.cnblogs.com/bundles/blog-common.css?v=ChDk9h03-S75WEqNhGvXkWireJ5cCWdK1xRM9NIXfnM1"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="bundle-SimpleGamboge.css-v=aSLAdexzVdfQ-X3NVB0Mbjc4zwVKew6kyW7t2_5aMDU1.css" tppabs="http://www.cnblogs.com/skins/SimpleGamboge/bundle-SimpleGamboge.css?v=aSLAdexzVdfQ-X3NVB0Mbjc4zwVKew6kyW7t2_5aMDU1"/>
+<link type="text/css" rel="stylesheet" href="208208.css-v=nKz4k1-yFlPrlVSPJYyOrPPJXhM=.css" tppabs="http://www.cnblogs.com/blog/customcss/208208.css?v=nKz4k1%2fyFlPrlVSPJYyOrPPJXhM%3d"/>
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="bundle-SimpleGamboge-mobile.css-v=d9LctKHRIQp9rreugMcQ1-UJuq_j1fo0GZXTXj8Bqrk1.css" tppabs="http://www.cnblogs.com/skins/SimpleGamboge/bundle-SimpleGamboge-mobile.css?v=d9LctKHRIQp9rreugMcQ1-UJuq_j1fo0GZXTXj8Bqrk1"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/irocker/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/irocker/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/irocker/wlwmanifest.xml"/>
+<script src="jquery.js" tppabs="http://common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'irocker', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="blog-common.js-v=Luc6U_bgyPg764kNG7TcM6wg6ibyyUYRDlBLbP3UdnA1.js" tppabs="http://www.cnblogs.com/bundles/blog-common.js?v=Luc6U_bgyPg764kNG7TcM6wg6ibyyUYRDlBLbP3UdnA1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/"><img id="blogLogo" src="logo.gif" tppabs="http://www.cnblogs.com/Skins/custom/images/logo.gif" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">irocker</a></h1>
+<h2>你也许会爱上城市的某一条街道<br/>
+喜欢趁着夜色独自在那徘徊<br/>
+他熟悉又陌生<br/>
+有过太多世人皆知<br/>
+或者无人知晓的故事发生<br/>
+当午夜降临喧嚣褪去<br/>
+点一根烟<br/>
+任晚风轻轻吹过<br/>
+像没发生过太多记忆<br/>
+似生活经过了时间<br/>
+--宁静嘎嘎</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/%27" tppabs="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://i.cnblogs.com/EditPosts.aspx?opt=1  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/EditPosts.aspx?opt=1%27" tppabs="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://msg.cnblogs.com/send/irocker  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://msg.cnblogs.com/send/irocker%27" tppabs="https://msg.cnblogs.com/send/irocker">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/rss  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/rss%27" tppabs="http://www.cnblogs.com/irocker/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/irocker/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="javascript:if(confirm(%27https://i.cnblogs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/%27" tppabs="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 85&nbsp; </span>
+<span id="stats_article_count">文章 - 1&nbsp; </span>
+<span id="stats-comment_count">评论 - 8</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="using-branch.html" tppabs="http://www.cnblogs.com/irocker/p/using-branch.html">[译]使用branch</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>这篇文章将介绍Git分支. 首先, 看看如果创建分支, 这就像是request一个新的项目历史. 接着, 来看看git checkout是如果能被用来选择一个分支的. 最后, 学习用git merge来合并分支.</p>
+<p>&nbsp;</p>
+<h1>git branch</h1>
+<p>我们可以把分支看作是request一个全新的工作目录, 缓存区, 项目历史的方法. 新的commit会在当前分支的历史中被纪录下来.</p>
+<p>&nbsp;</p>
+<p>git branch命令可以用来创建, 查看, 重命名, 删除分支.&nbsp;</p>
+<p>&nbsp;</p>
+<h2>用法</h2>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git branch
+</pre>
+</div>
+<p>列出你仓储的所有的分支.</p>
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git branch &lt;branch&gt;
+</pre>
+</div>
+<p>创建一个新分支. 不会自动switch到这个新分支中.</p>
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git branch -d &lt;branch&gt;
+</pre>
+</div>
+<p>删除指定的分支. 这是一个安全的操作. 因为当你的分支没有被merge时, Git会阻止你删除这个分支.</p>
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git branch -D &lt;branch&gt;
+</pre>
+</div>
+<p>强行删除指定的分支, 不管他有没有被merge.</p>
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git branch -m &lt;branch&gt;
+</pre>
+</div>
+<p>修改你当前分支的名字为&lt;branch&gt;.</p>
+<p>&nbsp;</p>
+<h2>讨论</h2>
+<p>&nbsp;在Git世界里, branch是一个很通常的部分, 你可以在你开发过程中的每一天都使用他. 当你想加一个新特性或者修复一个bug－不管是大是小-你都可以开一个branch来封装你这次修改. &nbsp;这能保证你不会将不稳定的代码提交到主代码中去, 还可以在merge到主branch前清理你的feature历史.</p>
+<p><img src="702742-20151004220922152-1861564857-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151004220922152-1861564857.png" alt="" /></p>
+<p>上图有两个分离的开发线, 一个是litte feature, 一个是longer-running feature. &nbsp;你不止能同时开发这两个feature branch, 你还可以继续开发你的主分支, 并且保持你的主分支不受feature分支的影响.</p>
+<h3>小贴示</h3>
+<p>Git branch的实现比SVN的model更轻量级一些. 他不是把文件从一个目录拷贝到另外一个目录, Git将branch做为一个到commit的引用存储. 因此, branch代表一系列的commit--而不是一个commit的容器.&nbsp;</p>
+<p>SVN的merge是基于文件的, Git基于一个抽象的commit.&nbsp;</p>
+<p>&nbsp;</p>
+<h2>例子</h2>
+<h3>创建branch</h3>
+<p>这对于理解branch是指向commit的非常重要. 当你创建一个branch, Git需要做的是只是创建一个指针. 如果一开始你的仓储如下:</p>
+<p><img src="702742-20151004222139402-2104852321-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151004222139402-2104852321.png" alt="" /></p>
+<p>然后, 你使用下面的命令创建一个branch:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git branch crazy-experiment
+</pre>
+</div>
+<p>仓储你的历史依然没有发生任何变化. 你所得到的仅仅是一个指向当前commit的指针:</p>
+<p><img src="702742-20151004222325058-1274254180-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151004222325058-1274254180.png" alt="" /></p>
+<p>注意你现在只是创建了一个branch, 还没有switch到这个新的branch下面工作. 你需要使用git checkout来选在这个新的branch, 才能切换到这个新的branch下工作.&nbsp;</p>
+<p>&nbsp;</p>
+<h3>删除branch</h3>
+<p>一旦你在一个branch中的工作完成了, 并且已经把他merge到了主branch, 你就可以删除这个branch, 而且不用担心丢失任何历史了:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git branch -d crazy-experiment
+</pre>
+</div>
+<p>如果这个branch没有merge到主分支, 上面的命令会输出如下错误信息:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">error: The branch 'crazy-experiment' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D crazy-experiment'.
+</pre>
+</div>
+<p>这个保护了你在未merge的时候就删除branch, 从而不小心丢失历史. 如果你真的想删除这个branch, 可以使用-D标记:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git branch -D crazy-experiment
+</pre>
+</div>
+<p>用这个删除branch不会有任何警告.</p>
+<p>&nbsp;</p>
+<h1>&nbsp;git checkout&nbsp;</h1>
+<p>git checkout命令能让你导航到你想要的branch中去. checkout 一个分支, 更新工作目录的文件已匹配这个branch, 告诉git纪录这个branch中的所有的新的commit. 可以将这个看成是选择开发线(line of development)的一种方式.</p>
+<p>在<a href="git-checkout.html" tppabs="http://www.cnblogs.com/irocker/p/git-checkout.html" target="_blank">之前的文章</a>, 我们讲过了如何使用checkout来查看老的commit. checkout branch是将你的工作目录更新到你选择的branch的状态. 新的修改都会被保存在项目历史中--这不是一个只读的操作.</p>
+<p>&nbsp;</p>
+<h2>用法</h2>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:true;">git checkout &lt;existing-branch&gt;
+</pre>
+</div>
+<p>checkout指定的branch, 这个branch必须是已经存在了的. 这个命令会切换&lt;existing-branch&gt;为你的当前branch, 并更新你的工作目录为这个branch的状态.</p>
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout -b &lt;new-branch&gt;
+</pre>
+</div>
+<p>创建&amp;&amp;checkout到&lt;new-branch&gt;. -b标记告诉Git在git checkout &lt;new-branch&gt;之前先运行git branch &lt;new-branch&gt;</p>
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout -b &lt;new-branch&gt; &lt;existing-branch&gt;
+</pre>
+</div>
+<p>基于&lt;existing-branch&gt;来创建&lt;new-branch&gt;, 而不是基于当前branch来创建.</p>
+<p>&nbsp;</p>
+<h2>讨论</h2>
+<p>git checkout和git branch是一对好基友. 当你想开发一个新特性的时候, 你通过git branch来创建一个branch, 然后使用git checkout切换到这个branch下. 你可以在一个仓储中在多个branch下工作, 只要使用checkout切换到你想要的branch下就行了.</p>
+<p><img src="702742-20151004225823636-1151498690-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151004225823636-1151498690.png" alt="" /></p>
+<h3>Detached HEADs</h3>
+<p>git checkout更新HEAD指向你指定的branch或commit. 当你checkout一个commit, 会转为一个detached HEAD状态.</p>
+<p><img src="702742-20151004231228730-1279673225-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151004231228730-1279673225.png" alt="" /></p>
+<p>detached状态意味着你做的所有的状态和项目发展的其它部分都是分离的. 在detached HEAD状态中开发的东西不能被merge.</p>
+<p>你应该在一个branch下开发--永远不要在一个detached HEAD状态中开发.</p>
+<p>&nbsp;</p>
+<h2>例子</h2>
+<p>下面的例子演示了一个branch的基本的开发流程. 当你开发一个新特性的时候, 你首先创建一个branch然后switch到这个branch下:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git branch new-feature
+git checkout new-feature
+</pre>
+</div>
+<p>然后, 你可以commit新快照了:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;"># Edit some files
+git add &lt;file&gt;
+git commit -m "Started work on a new feature"
+# Repeat
+</pre>
+</div>
+<p>new-feature里面的纪录、历史都完全是和master隔离的. 当你想回到master的时候可以运行以下命令:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git checkout master
+</pre>
+</div>
+<p>&nbsp;</p>
+<h1>git merge</h1>
+<p>当前的branch会被更新，merge. 目标branch不会有任何影响. git merge经常是和git checkout一起配套使用的, git branch -d 用来删除目标branch.</p>
+<p>&nbsp;</p>
+<h2>用法</h2>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git merge &lt;branch&gt;</pre>
+</div>
+<p>merge&lt;branch&gt;到当前的branch. Git会自动决定merge的算法.</p>
+<p>&nbsp;</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;">git merge --on-ff &lt;branch&gt;
+</pre>
+</div>
+<p>merge&lt;branch&gt;到当前的branch, 不同的是会生成一个merge commit（甚至他是一个fast-forward merge）.&nbsp;</p>
+<p>&nbsp;</p>
+<h2>讨论</h2>
+<p>一旦你在一个隔离的branch中开发的新特性完成了, 你将把他们merge到你的主branch中去. &nbsp;基于你仓储的结构, Git有几种算法: fast-forward merge或3-way merge.</p>
+<h3>fast-forward merge</h3>
+<p><img src="702742-20151004233741746-107251694-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151004233741746-107251694.png" alt="" /></p>
+<h3>3-way merge</h3>
+<p><img src="702742-20151004233830902-2056772795-1.png" tppabs="http://images2015.cnblogs.com/blog/702742/201510/702742-20151004233830902-2056772795.png" alt="" /></p>
+<h3>解决冲突</h3>
+<p>如果你在merge的时候两个branch同一文件的同一行都有修改, Git无法分辨出那一个版本是你想要的. 当这种情况出现的时候, 你得手动解决冲突然后才能merge.</p>
+<p>当你遇到了一个merge冲突的时候, 运行git status来显示你需要处理哪些文件. 例如, 如果两个branch都修改了hello.py的同一处, 你将看到如下的信息:</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;"># On branch master
+# Unmerged paths:
+# (use "git add/rm ..." as appropriate to mark resolution)
+#
+# both modified: hello.py
+#
+</pre>
+</div>
+<p>现在你可以去hello.py文件里面选择哪个版本是你想要的. 当你准备结束这个merge, 你需要使用git add这些冲突的文件来告诉git冲突已经解决了. 然后, 你可以使用git commit生成一个merge commit.&nbsp;</p>
+<p>注意了merge冲突只会出现在3-way merge这种情况. 在fast-forward merge中不可能会有冲突.</p>
+<p>&nbsp;</p>
+<h2>例子</h2>
+<p>fast-forward merge</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;"># Start a new feature
+git checkout -b new-feature master
+
+# Edit some files
+git add &lt;file&gt;
+git commit -m "Start a feature"
+
+# Edit some files
+git add &lt;file&gt;
+git commit -m "Finish a feature"
+
+# Merge in the new-feature branch
+git checkout master
+git merge new-feature
+git branch -d new-feature
+</pre>
+</div>
+<p>3-way merge</p>
+<div class="cnblogs_Highlighter">
+<pre class="brush:javascript;gutter:false;"># Start a new feature
+git checkout -b new-feature master
+
+# Edit some files
+git add &lt;file&gt;
+git commit -m "Start a feature"
+
+# Edit some files
+git add &lt;file&gt;
+git commit -m "Finish a feature"
+
+# Develop the master branch
+git checkout master
+
+# Edit some files
+git add &lt;file&gt;
+git commit -m "Make some super-stable changes to master"
+
+# Merge in the new-feature branch
+git merge new-feature
+git branch -d new-feature
+</pre>
+</div>
+<p>　　</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2015-10-04 23:55</span> <a href="javascript:if(confirm(%27http://www.cnblogs.com/irocker/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.cnblogs.com/irocker/%27" tppabs="http://www.cnblogs.com/irocker/">irocker</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="javascript:if(confirm(%27https://i.cnblogs.com/EditPosts.aspx?postid=4852955  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://i.cnblogs.com/EditPosts.aspx?postid=4852955%27" tppabs="https://i.cnblogs.com/EditPosts.aspx?postid=4852955" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(4852955);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=208208,cb_entryId=4852955,cb_blogApp=currentBlogApp,cb_blogUserGuid='0dfb4f4d-1f81-e411-b908-9dcfd8948a71',cb_entryCreatedDate='2015/10/4 23:55:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='cnblogs_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='cnblogs_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright &copy;2017 irocker
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "hm.js-7a1c05c140b408c03df47aab39f3da1d"/*tpa=http://hm.baidu.com/hm.js?7a1c05c140b408c03df47aab39f3da1d*/;
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--PageEndHtml Block End-->
+</body>
+</html>
