@@ -19,11 +19,15 @@
 ### 7.查看仓库修改历史记录, 显示从最近到最远的提交日志
 #### $ git log
 #### $ git log --pretty=oneline
+#### $ git reflog 回查每一次commit，包括reset操作后的commits
 ### 8. 时光穿梭机,HEAD 表示当前版本，也就是最新提交的版本
 #### $ git reset --hard HEAD
 #### $ git reset --hard HEAD^
 #### $ git reset --hard HEAD^^
 #### $ git reset --hard HEAD~100
+***
+#### $ git reset --mixed HEAD
+#### $ git reset --soft HEAD
 ### 9. 查看文件的内容
 #### $ cat [filename]
 ### 10. 从commit id 直接回退
