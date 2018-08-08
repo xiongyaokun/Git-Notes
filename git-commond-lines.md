@@ -47,7 +47,23 @@
 #### $ git remote add origin https://github.com/xiongyaokun/learngit.git
 #### $ git push -u origin master    (因为是第一次提交，所以加上-u 参数， 以后提交的时候就不需要了)
 
-
+***
+2018-08-08
+### 16. .gitignore文件
+#### 忽略规则
+- 以斜杠"/"开头表示目录
+- 以星号"*"通配多个字符
+- 以问好"?"通配单个字符
+- 以方括号"[]"包含单个字符的匹配列表
+- 以叹号"!"表示不忽略匹配到的文件或目录
+#### 示例说明
+- fd1/*  忽略目录fd1下的全部内容，不管是根目录下的/fd1/目录，还是某个子目录/child/fd1/，都会被忽略；
+- /fd1/*  忽略根目录下/fd1/的全部内容;
+- *.zip  忽略所有的.zip文件
+- *.pyc  忽略所有的.pyc文件
+- /mtk/
+- !/mtk/one.txt  此两个规则是只管理/mtk/one.txt文件，忽略/mtk/文件下的其他文件
+#### **注意：当文件已经被git tracked后，在.gitignore内添加规则就无效了**
 
 ## Issues
 
