@@ -71,13 +71,13 @@
 每次提交，Commit message都包含三个部分: header,body,footer,
 其中header是必需的，body和footer可以省略,
 不管是哪个部分，任何一行都不超过72个字符（或100个字符）,这是为了避免自动换行引起美观！
-<pre><code>
+```
 <type>(<scope>): <subject>
 <BLANK LINE>
 <body>
 <BLANK LINE>
 <footer>
-</code></pre>
+```
 
 #### Header
 Header部分只有一行，包括三个字段：type(必需)、scope(可选)、subject(必需)
