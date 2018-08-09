@@ -65,6 +65,42 @@
 - !/mtk/one.txt  此两个规则是只管理/mtk/one.txt文件，忽略/mtk/文件下的其他文件
 #### **注意：当文件已经被git tracked后，在.gitignore内添加规则就无效了**
 
+***
+2018-08-09
+### 17. git commit 规范
+每次提交，Commit message都包含三个部分: header,body,footer,
+其中header是必需的，body和footer可以省略,
+不管是哪个部分，任何一行都不超过72个字符（或100个字符）,这是为了避免自动换行引起美观！
+<pre>
+<type>(<scope>): <subject>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+</pre>
+
+#### Header
+Header部分只有一行，包括三个字段：type(必需)、scope(可选)、subject(必需)
+**type**
+用于说明commit的类别，只允许使用下面7个标识：
+- feat: 新功能（feature）
+- fix: 修补bug
+- docs: 文档（documentation）
+- style: 格式（不影响代码运行的变动）
+- refactor: 重构(既不是新增功能，也不是修改bug的代码运动)
+- test: 增加测试
+- chore: 构建过程或辅助工具的变动
+**scope**
+scope用于说明commit影响的范围，比如数据层，控制层，视图层等等，视项目不同而不同，如果你修改了不止一个scope，可以使用\*代替
+**subject**
+subject是commit的简短描述，不超过50个字符
+**其他注意事项：**
+- 以动词开头，使用第一人称现在时，比如change，而不是changed或changes
+- 第一个字母小写
+- 结尾不加句号(.)
+**Body**
+Body部分是对本次commit的详细描述，可以分成多行。
+
 ## Issues
 
 1. **Error Message:** fatal: remote origin already exists.
